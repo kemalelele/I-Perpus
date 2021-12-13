@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Data Buku Larabuk</title>
+    <title>Data Buku I-Perpus</title>
     <style>
     /* --------------------------------------------------------------
 
@@ -69,7 +69,7 @@
         </style>
     </head>
     <body>
-        <h1>Data Buku Larabuk</h1>
+        <h1>Data Buku I-Perpus</h1>
         <hr>
         <table>
             <thead>

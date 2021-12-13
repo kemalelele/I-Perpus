@@ -31,7 +31,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    Selamat datang di E-Perpus
+                    Selamat datang di I-Perpus
 
                     <table class="table table-striped table-hovered">
                         <tr>

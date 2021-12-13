@@ -43,7 +43,7 @@ class BooksController extends Controller
                     ]);
             })->make(true);
         }
-
+ 
         $html = $htmlBuilder
             ->addColumn(['data' => 'title', 'name' => 'title', 'title' => 'Judul'])
             ->addColumn(['data' => 'amount', 'name' => 'amount', 'title' => 'Jumlah'])
@@ -88,6 +88,27 @@ class BooksController extends Controller
             // Menyimpan cover ke folder public/img
             $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
             $uploaded_cover->move($destinationPath, $filename);
+
+            // Mengisi field cover di book dengan filename yang baru dibuat
+            $book->cover = $filename;
+            $book->save();
+        }
+
+        // Isi field pdf jika ada cover yang diupload
+        if ($request->hasFile('pdf')) {
+
+            // Mengambil file yang diupload
+            $uploaded_pdf = $request->file('pdf');
+
+            // Mengambil extension file
+            $extension = $uploaded_pdf->getClientOriginalExtension();
+
+            // Membuat nama file random berikut extension
+            $filename = md5(time()) . "." . $extension;
+
+            // Menyimpan pdf ke folder public/pdf
+            $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'pdfbook';
+            $uploaded_pdf->move($destinationPath, $filename);
 
             // Mengisi field cover di book dengan filename yang baru dibuat
             $book->cover = $filename;

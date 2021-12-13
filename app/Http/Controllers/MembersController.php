@@ -102,7 +102,7 @@ class MembersController extends Controller
 
         // Kirim email
         Mail::send('auth.emails.invite', compact('member', 'password'), function($m) use ($member) {
-            $m->to($member->email, $member->name)->subject('Anda telah didaftarkan di Larapus!');
+            $m->to($member->email, $member->name)->subject('Anda telah didaftarkan di I-Perpus!');
         });
 
         Session::flash("flash_notification", [

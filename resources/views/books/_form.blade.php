@@ -33,6 +33,17 @@
         <p class="help-block">Size file (JPG/JPEG/PNG/GIF) maks 1MB</p>
         {!! $errors->first('cover', '<p class="help-block">:message</p>') !!}
     </div>
+
+    <div class="form-group has-feedback{{ $errors->has('pdf') ? ' has-error' : '' }}">
+        {!! Form::label('pdf', 'PDF') !!}
+
+        {!! Form::file('pdf') !!}
+        @if (isset($book) && $book->pdf)
+            <p> {!! Html::pdf(asset('pdf/'.$pdf->pdf), null, ['class' => 'img-rounded img-responsive']) !!} </p>
+        @endif
+        <p class="help-block">Size file PDF maks 5MB</p>
+        {!! $errors->first('cover', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 <!-- /.box-body -->
 

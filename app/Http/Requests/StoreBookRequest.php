@@ -28,7 +28,9 @@ class StoreBookRequest extends FormRequest
             'title' => 'required|unique:books,title',
             'author_id' => 'required|exists:authors,id',
             'amount' => 'numeric',
-            'cover' => 'image|max:1024'
+            'cover' => 'image|max:1024',
+            'pdf' => 'mimes:pdf|max:10000'
+            
         ];
     }
 
@@ -46,7 +48,10 @@ class StoreBookRequest extends FormRequest
             'author_id.exists' => 'Penulis tidak ada',
             'amount.numeric' => 'Jumlah buku harus angka',
             'cover.image' => 'Cover buku harus format gambar',
-            'cover.max' => 'Size cover buku terlalu besar'
+            'cover.max' => 'Size cover buku terlalu besar',
+            'pdf.file' => 'file buku harus format pdf',
+            'pdf.max' => 'Size file buku terlalu besar'
+            
         ];
     }
 }

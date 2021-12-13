@@ -3,7 +3,7 @@
 </p>
 
 <p>
-    Admin kami telah mendaftarkan email Anda {{ $member->email }} ke Larapus. Untuk login, silahkan kunjungi <a href={{ $login = url('login') }}>{{ $login }}</a> Login dengan email Anda dan password <strong>{{ $password }}</strong>.
+    Admin kami telah mendaftarkan email Anda {{ $member->email }} ke IPerpus. Untuk login, silahkan kunjungi <a href={{ $login = url('login') }}>{{ $login }}</a> Login dengan email Anda dan password <strong>{{ $password }}</strong>.
 </p>
 
 <p>
