@@ -38,9 +38,9 @@
         {!! Form::label('pdf', 'PDF') !!}
 
         {!! Form::file('pdf') !!}
-        @if (isset($book) && $book->pdf)
+        <!-- @if (isset($book) && $book->pdf)
             <p> {!! Html::pdf(asset('pdf/'.$pdf->pdf), null, ['class' => 'img-rounded img-responsive']) !!} </p>
-        @endif
+        @endif -->
         <p class="help-block">Size file PDF maks 5MB</p>
         {!! $errors->first('cover', '<p class="help-block">:message</p>') !!}
     </div>

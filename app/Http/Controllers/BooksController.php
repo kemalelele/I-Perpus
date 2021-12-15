@@ -111,7 +111,7 @@ class BooksController extends Controller
             $uploaded_pdf->move($destinationPath, $filename);
 
             // Mengisi field cover di book dengan filename yang baru dibuat
-            $book->cover = $filename;
+            $book->pdf = $filename;
             $book->save();
         }
 
@@ -190,6 +190,37 @@ class BooksController extends Controller
 
             // Ganti field cover dengan cover yang baru
             $book->cover = $filename;
+            $book->save();
+        }
+
+        if ($request->hasFile('pdf')) {
+
+            // Mengambil pdf yang diupload berikut ektensinya
+            $filename = null;
+            $uploaded_cover = $request->file('pdf');
+            $extension = $uploaded_cover->getClientOriginalExtension();
+
+            // Membuat nama file random dengan extension
+            $filename = md5(time()) . '.' . $extension;
+
+            // Menyimpan pdf ke folder public/pdfbook
+            $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'pdfbook';
+            $uploaded_cover->move($destinationPath, $filename);
+
+            // Hapus pdf lama, jika ada
+            if ($book->cover) {
+                $old_cover = $book->cover;
+                $filepath = public_path() . DIRECTORY_SEPARATOR . 'pdfbook' . DIRECTORY_SEPARATOR . $book->cover;
+
+                try {
+                    File::delete($filepath);
+                } catch (FileNotFoundException $e) {
+                    // File sudah dihapus/tidak ada
+                }
+            }
+
+            // Ganti field cover dengan cover yang baru
+            $book->pdf = $filename;
             $book->save();
         }
 
